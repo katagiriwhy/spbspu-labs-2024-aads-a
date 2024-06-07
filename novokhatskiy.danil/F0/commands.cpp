@@ -1,11 +1,11 @@
 #include "commands.hpp"
 #include <fstream>
 #include <algorithm>
-#include <set>
+#include <forward_list.hpp>
 #include <iterator>
 #include "dictionary.hpp"
 
-using val_t = std::pair< std::string, std::set< std::string > >;
+using val_t = std::pair< std::string, novokhatskiy::ForwardList< std::string > >;
 
 void novokhatskiy::unique(dictionaries &dict, std::istream &in)
 {

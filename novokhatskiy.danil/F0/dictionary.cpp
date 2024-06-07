@@ -1,7 +1,7 @@
 #include "dictionary.hpp"
 #include <stdexcept>
 
-using val_t = std::pair< std::string, std::set< std::string > >;
+using val_t = std::pair< std::string, novokhatskiy::ForwardList< std::string > >;
 
 std::istream& novokhatskiy::operator>>(std::istream& in, Dictionary& dict)
 {
@@ -11,14 +11,14 @@ std::istream& novokhatskiy::operator>>(std::istream& in, Dictionary& dict)
   std::string example = {};
   std::string tmp = {};
   std::getline(in, example, '\n');
-  std::pair< std::string, std::set< std::string > > pair;
+  std::pair< std::string, novokhatskiy::ForwardList< std::string > > pair;
   pair.first = translation;
   for (size_t i = 0; example[i] != '\0'; i++)
   {
     tmp += example[i];
     if (example[i] == '.' || example[i] == '!' || example[i] == '?')
     {
-      pair.second.insert(tmp);
+      pair.second.push_front(tmp);
       tmp = {};
     }
   }

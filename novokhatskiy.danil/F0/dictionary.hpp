@@ -2,7 +2,7 @@
 #define DICTIONARY_HPP
 
 #include <string>
-#include <set>
+#include <forward_list.hpp>
 #include <iostream>
 #include <AVLtree.hpp>
 
@@ -11,7 +11,7 @@ namespace novokhatskiy
   class Dictionary
   {
   public:
-    using val_t = std::pair< std::string, std::set< std::string > >;
+    using val_t = std::pair< std::string, novokhatskiy::ForwardList< std::string > >;
     Dictionary() = default;
     ~Dictionary() = default;
     void addValue(Dictionary&& other);
